@@ -1,0 +1,100 @@
+/* .vitepress/theme/custom.css */
+
+/* 根变量设置 */
+:root {
+    --vp-layout-max-width: 1440px;  /* 整体最大宽度 */
+    --vp-c-bg: #ffffff;
+    --vp-sidebar-width: 280px;      /* 侧边栏宽度 */
+    --content-width: 940px;         /* 主内容区域宽度 */
+  }
+  
+  /* 导航栏样式 */
+  .VPNav {
+    width: 100% !important;
+    background-color: var(--vp-c-bg);
+    z-index: 100;
+    position: sticky;
+    top: 0;
+  }
+  
+  .VPNavBar.has-sidebar {
+    width: 100% !important;
+    border-bottom: 1px solid var(--vp-c-divider);
+  }
+  
+  /* 主容器样式 */
+  .container {
+    max-width: var(--vp-layout-max-width) !important;
+    margin: 0 auto !important;
+    padding: 0 32px !important;
+  }
+  
+  /* 文档区域布局 */
+  .VPDoc.has-aside .content-container {
+    max-width: var(--content-width) !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+  
+  /* 主内容区域样式 */
+  .VPDoc.has-aside .content {
+    padding: 0 32px !important;
+    max-width: none !important;
+    margin: 0 auto !important;
+    margin-right: calc(var(--vp-sidebar-width) + 64px) !important;
+  }
+  
+  .VPDoc .content {
+    width: 100% !important;
+    min-width: 640px;
+  }
+  
+  /* 右侧边栏样式 */
+  .VPDoc.has-aside .aside {
+    position: fixed;
+    right: 32px;
+    top: 80px;  /* 调整顶部距离，与导航栏保持适当间距 */
+    padding-left: 24px;
+    width: var(--vp-sidebar-width);
+    height: calc(100vh - 80px);  /* 设置高度，确保可滚动 */
+    overflow-y: auto;  /* 内容过多时可滚动 */
+  }
+  
+  /* 代码块样式优化 */
+  .vp-doc div[class*='language-'] {
+    margin: 16px 0;
+    width: auto !important;
+    border-radius: 8px;
+  }
+  
+  /* 移动端适配 */
+  @media (max-width: 960px) {
+    :root {
+      --content-width: 100%;
+    }
+  
+    .container {
+      padding: 0 16px !important;
+    }
+  
+    .VPDoc.has-aside .content {
+      margin-right: 0 !important;
+      padding: 0 16px !important;
+      min-width: auto;
+    }
+    
+    .VPDoc.has-aside .aside {
+      position: static;
+      padding-left: 0;
+      width: 100%;
+      height: auto;
+      margin-top: 32px;
+    }
+  }
+  
+  /* 大屏幕优化 */
+  @media (min-width: 1440px) {
+    .VPDoc.has-aside .aside {
+      right: calc((100vw - var(--vp-layout-max-width)) / 2 + 32px);
+    }
+  }
